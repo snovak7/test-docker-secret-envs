@@ -26,8 +26,6 @@ jobs:
             image: ghcr.io/snovak7/test-docker-secret-envs
             name: Test
             context: .
-            secrets: |
-              client_id=client,client_secret=secret,issuer=issuer value
     steps:
       - uses: actions/checkout@v4
         with:
@@ -58,4 +56,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          secrets: matrix.secrets
+          secrets: |
+            client_id=client,client_secret=secret,issuer=issuer value
